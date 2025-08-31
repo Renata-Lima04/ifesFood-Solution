@@ -9,15 +9,36 @@ namespace ifesFood.admin
 {
     public partial class FrmProduto : System.Web.UI.Page
     {
+    private string mensagem;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
             {
                 AtualizarLvProdutos(ProdutoDAO.ListarProdutos());
+            string cod = Request.QueryString["cod"];
+                if (cod != null)
+                {
+                    int id = int.Parse(cod);
+                    Produto produto = ProdutoDAO.VisualizarProduto(id);
+                    MostrarDadosProduto(produto);
+                }
+                
             }
 
         }
+     private void MostrarDadosProduto(Produto produto)
+        {
+            txtDescricao.Value = produto.Descricao;
+            txtNome.Value = produto.Nome;
+            txtImagem.Value = produto.Imagem;
+            txtPreco.Value = produto.Preco.ToString();
 
+
+            txtDescricao.Disabled = true;
+            txtNome.Disabled = true;
+            txtImagem.Disabled = true;
+            txtPreco.Disabled = true;
+        }
         private void AtualizarLvProdutos(List<Produto> produtos)
         {
             var lista = produtos.OrderBy(p => p.Nome);
@@ -68,6 +89,13 @@ namespace ifesFood.admin
                 string mensagem = ProdutoDAO.ExcluirProduto(id);
                 AtualizarLvProdutos(ProdutoDAO.ListarProdutos());
                 lblMensagem.InnerText = mensagem;
+            }
+             else if (command == "Visualizar")
+            {
+                Response.Redirect("~/admin/FrmProduto.aspx?cod=" + id);
+            }
+            else if (command == "Editar")
+            {
             }
 
         }
