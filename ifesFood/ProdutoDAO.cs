@@ -38,6 +38,22 @@ namespace ifesFood
             return lista;
         }
 
+         internal static Produto VisualizarProduto(int id)
+        {
+            Produto produto = null;
+
+            try
+            {
+                using (var ctx = new ifesFoodDBEntities())
+                {
+                    produto = ctx.Produtos.FirstOrDefault(p => p.Id == id);
+                }
+            }
+            catch (Exception ex) { }
+
+            return produto;
+        }
+
         public static string ExcluirProduto(int id)
         {
             string mensagem = "";
