@@ -81,10 +81,10 @@
 
             <section>
 
-                <table class="table table-hover">
+                <table class="table table-striped table-hover">
                     <thead>
                         <tr>
-                            <th scope="col">#</th>
+                            <th scope="col">Código</th>
                             <th scope="col">Produto</th>
                             <th scope="col">Preço</th>
                             <th scope="col">Cadastro</th>
@@ -98,7 +98,7 @@
                             <ItemTemplate>
                                 <%--Repetir--%>
                                 <tr>
-                                    <th scope="row"><%# Eval("Id") %></th>
+                                    <td><%# Eval("Id") %></td>
                                     <td><%# Eval("Nome") %></td>
                                     <td><%# Eval("Preco") %></td>
                                     <td><%# Eval("DataCadastro") %></td>
@@ -124,7 +124,7 @@
                                             CommandName="Deletar"
                                             CommandArgument='<%# Eval("Id") %>'
                                             AlternateText="Apagar Produto"
-                                            OnClientClick="confirm('Deseja realmente excluir?')" />
+                                            OnClientClick=" if (confirm('Deseja realmente excluir?')){}else(alert('Operação cancelada!');}" />
 
 
                                     </td>
@@ -139,8 +139,8 @@
                 </table>
 
             </section>
-
-        </form>
+ </form>
+      
     </main>
 
 
