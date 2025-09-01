@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Web.Services.Description;
 
 namespace ifesFood
 {
@@ -49,7 +50,10 @@ namespace ifesFood
                     produto = ctx.Produtos.FirstOrDefault(p => p.Id == id);
                 }
             }
-            catch (Exception ex) { }
+            catch (Exception ex) {
+                string mensagem = "";
+                mensagem = ex.Message;
+            }
 
             return produto;
         }

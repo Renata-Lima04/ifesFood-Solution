@@ -77,27 +77,21 @@ namespace ifesFood.admin
 
         protected void lvProdutos_ItemCommand(object sender, ListViewCommandEventArgs e)
         {
-            string comando = e.CommandName;
-
+            string command = e.CommandName;
             int id = Convert.ToInt32(e.CommandArgument);
-
-            if (comando == "Deletar")
+            if (command == "Deletar")
             {
-
-                //Iremos excluir o produto
-
                 string mensagem = ProdutoDAO.ExcluirProduto(id);
                 AtualizarLvProdutos(ProdutoDAO.ListarProdutos());
                 lblMensagem.InnerText = mensagem;
             }
-             else if (command == "Visualizar")
+            else if (command == "Visualizar")
             {
                 Response.Redirect("~/admin/FrmProduto.aspx?cod=" + id);
             }
             else if (command == "Editar")
             {
             }
-
         }
     }
 }
