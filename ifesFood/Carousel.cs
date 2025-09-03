@@ -18,6 +18,7 @@ namespace ifesFood
         public string Titulo { get; set; }
         public string Descricao { get; set; }
         public int ProdutoID { get; set; }
+        public Nullable<bool> Destaque { get; set; }
     
         public virtual Produto Produto { get; set; }
     }

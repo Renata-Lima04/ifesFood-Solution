@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ifesFood.admin
 {
@@ -22,6 +24,14 @@ namespace ifesFood.admin
             }
 
             return mensagem;
+        }
+
+        internal static List<Carousel> ListarCarousel()
+        {
+            ifesFoodDBEntities ctx = new ifesFoodDBEntities();
+            var lista = ctx.Carousels.ToList();
+
+            return lista;
         }
     }
 }

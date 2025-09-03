@@ -9,12 +9,23 @@ namespace ifesFood.admin
 {
     public partial class FrmCarousel : System.Web.UI.Page
     {
+       
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
             {
                 AtualizarDdlProdutos(ProdutoDAO.ListarProdutos());
+                AtualizarLvCarousel(CarouselDAO.ListarCarousel());
             }
+        }
+
+        private void AtualizarLvCarousel(List<Carousel> carousel)
+        {
+
+           
+            lvCarousel.DataSource = carousel;
+            lvCarousel.DataBind();
         }
 
         private void AtualizarDdlProdutos(List<Produto> produtos)
@@ -33,11 +44,26 @@ namespace ifesFood.admin
             carousel.Descricao = txtDescricao.Value;
             carousel.ProdutoID = Convert.ToInt32(DdlProdutos.SelectedValue);
 
+            var destaque = cbDestaque.Checked;
+            carousel.Destaque = destaque;
+
+            
+
+            lblMensagem.InnerText = CarouselDAO.CadastrarCarousel(carousel);
+            AtualizarLvCarousel(CarouselDAO.ListarCarousel());
+
             txtTitulo.Value = "";
             txtDescricao.Value = "";
             DdlProdutos.SelectedIndex = 0;
+            cbDestaque.Checked = false;
 
-            lblMensagem.InnerText = CarouselDAO.CadastrarCarousel(carousel);
+
+
+
+        }
+
+
+       
         }
     }
-}
+    

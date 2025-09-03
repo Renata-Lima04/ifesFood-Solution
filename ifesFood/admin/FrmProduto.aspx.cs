@@ -38,6 +38,10 @@ namespace ifesFood.admin
             txtNome.Disabled = true;
             txtImagem.Disabled = true;
             txtPreco.Disabled = true;
+
+            btnCadastrar.Visible = false;
+            btnLimpar.Visible = false;
+            btnAddProduto.Visible = true;
         }
         private void AtualizarLvProdutos(List<Produto> produtos)
         {

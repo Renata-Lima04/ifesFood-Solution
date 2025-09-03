@@ -69,10 +69,14 @@
                 <p>
                     <asp:Button Text="Cadastrar" ID="btnCadastrar" runat="server" class="btn-primary" OnClick="btnCadastrar_Click" />
 
-                    <input type="reset" value="Limpar" class="btn-secondary" />
+
+                    <input type="reset" value="Limpar" class="btn-secondary" id = "btnLimpar" runat ="server" />
                 </p>
 
                 <p>
+                    <a href="/admin/FrmProduto.aspx" id ="btnAddProduto" runat ="server" visible ="false" class= "btn btn-success">
+                         Adicionar Novo Produto</a>
+
                     <label id="lblMensagem" runat="server"></label>
                 </p>
 

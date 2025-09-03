@@ -62,6 +62,11 @@
                 </p>
 
                 <p>
+                    <label>Destaque:</label>
+                    <input type="checkbox" id ="cbDestaque" runat ="server" /> Sim
+ </p>
+
+                <p>
                     <asp:Button Text="Cadastrar" ID="btnCadastrar" runat="server" class="btn-primary" OnClick="btnCadastrar_Click"/>
 
                     <input type="reset" value="Limpar" class="btn-secondary" />
@@ -72,6 +77,65 @@
                 </p>
 
             </div>
+            <section>
+
+     <table class="table table-striped table-hover">
+         <thead>
+             <tr>
+                 <th scope="col">Id</th>
+                 <th scope="col">Título</th>
+                 <th scope="col">Descrição</th>
+                 <th scope="col">ProdutoID</th>
+                 <th scope="col">Destaque</th>
+             </tr>
+         </thead>
+         <tbody>
+
+
+             <asp:ListView runat="server" ID="lvCarousel" >
+                 <ItemTemplate>
+                     <%--Repetir--%>
+                     <tr>
+                         <th scope="row"><%# Eval("Id") %></th>
+                         <td><%# Eval("Titulo") %></td>
+                         <td><%# Eval("Descricao") %></td>
+                         <td><%# Eval("ProdutoID") %></td>
+                         <td><%# Eval("Destaque") %></td>
+                         <td>
+                            
+
+                             <asp:ImageButton ImageUrl="../img/view.svg" runat="server"
+                                 
+                                 AlternateText="Visualizar Produto" />
+                                
+
+
+
+                             <asp:ImageButton ImageUrl="../img/edit.svg" runat="server"
+                                 
+                                 AlternateText="Editar Produto" />
+                              
+
+
+                             <asp:ImageButton ImageUrl="../img/delete.svg" runat="server"
+                                 
+                                 AlternateText="Apagar Produto"
+                                 OnClientClick=" if (confirm('Deseja realmente excluir?')){}else(alert('Operação cancelada!');}" />
+
+
+                         </td>
+                         </tr>
+                          
+                     <%--Fim Repetir--%>
+                 </ItemTemplate>
+             </asp:ListView>
+
+
+
+         </tbody>
+     </table>
+
+ </section>
         </form>
 
 
